@@ -1081,7 +1081,7 @@ public:
         // Cerrar los archivos
         entrada2.close();
         salida2.close();
-        int bytess = 3280 * 3;
+        int bytess = Disco.getSDD().getNumBytes() * Disco.getSDD().getNumSectoresXBloque();
         std::ifstream pro(archivoNuevo2, std::ios::binary);
         pro.seekg(0, std::ios::end);
         std::streampos fileSize = pro.tellg();
@@ -1342,7 +1342,6 @@ int main() {
         std::cout << "9. Guardar Cambios de Pagina" << std::endl;
         std::cout << "10. Guardar Cambios de Todas las Paginas" << std::endl;
         std::cout << "11. Mover Registros" << std::endl;
-        std::cout << "12. Eliminar Registro" << std::endl;
         std::cout << "20. Apagar" << std::endl;
 
         // Solicitar opción al usuario
@@ -1434,16 +1433,6 @@ int main() {
             std::cout << std::endl;
             PC->MoverRegistro(opt,opt2);
         }
-        else if (opcion == 12) {
-            std::cout << "Selecciono la opcion: Mover Registros" << std::endl;
-            int opt = 0, opt2 = 0;
-            std::cout << "Ingrese el numero del Primer Registro: ";
-            std::cin >> opt;
-            std::cout << "Ingrese el numero del Segundo Registro: ";
-            std::cin >> opt2;
-            std::cout << std::endl;
-            PC->MoverRegistro(opt, opt2);
-        }
         else if (opcion == 20) {
             std::cout << "Selecciono la opcion: Apagar" << std::endl;
             std::cout << "Apagando Sistema..." << std::endl;
@@ -1456,5 +1445,6 @@ int main() {
 
     return 0;
 }
-//INT#PassengerId|STR#2#Survived|STR#2#Survived|STR#84#Name|STR#7#Sex|STR#5#Age|STR#2#SibSp|STR#2#Parch|STR#20#Ticket|STR#12#Fare|STR#20#Cabin|STR#2#Embarked|
+
+//esquema: INT#PassengerId|STR#2#Survived|STR#2#Survived|STR#84#Name|STR#7#Sex|STR#5#Age|STR#2#SibSp|STR#2#Parch|STR#20#Ticket|STR#12#Fare|STR#20#Cabin|STR#2#Embarked|
 //_CRT_SECURE_NO_WARNINGS
